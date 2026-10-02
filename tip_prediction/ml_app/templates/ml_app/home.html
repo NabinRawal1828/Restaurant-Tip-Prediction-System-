@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Predictor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ml_app/styles.css' %}">
+</head>
+<body class="app-body">
+    <header class="topbar app-topbar">
+        <div class="brand">TipWise</div>
+        <nav class="nav">
+            <a href="{% url 'landing' %}">Home</a>
+            <a href="{% url 'predict' %}">Prediction App</a>
+        </nav>
+    </header>
+
+    <div class="page-wrap">
+        <div class="card app-card">
+            <div class="header">
+                <span class="badge">ML Prediction</span>
+                <h1>Restaurant Tip Predictor</h1>
+                <p>Enter the six restaurant details below and the model will estimate the tip amount.</p>
+            </div>
+
+            <form method="post" class="predict-form">
+                {% csrf_token %}
+
+                <div class="field-grid">
+                    {% for field in form %}
+                        <div class="field">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="error">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button type="submit">Predict Tip</button>
+            </form>
+
+            {% if result is not None %}
+                <div class="result-box">
+                    <span>Predicted Tip</span>
+                    <strong>$ {{ result }}</strong>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

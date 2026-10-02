@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ml_app/styles.css' %}">
+</head>
+<body class="feature-page-body">
+    <header class="topbar">
+        <div class="brand">TipWise</div>
+        <nav class="nav">
+            <a href="{% url 'landing' %}">Home</a>
+            <a href="{% url 'predict' %}">Open App</a>
+        </nav>
+    </header>
+
+    <main class="feature-page">
+        <div class="feature-page-header">
+            <span class="badge">Restaurant View</span>
+            <h1>{{ title }}</h1>
+            <p>{{ description }}</p>
+        </div>
+
+        <div class="feature-list">
+            {% for item in items %}
+                <div class="feature-item">
+                    <div class="feature-item-title">{{ item.title }}</div>
+                    <div class="feature-item-meta">{{ item.meta }}</div>
+                    <div class="feature-item-text">{{ item.text }}</div>
+                </div>
+            {% empty %}
+                <div class="feature-item">
+                    <div class="feature-item-title">No data available</div>
+                    <div class="feature-item-text">This section is ready for your restaurant data.</div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

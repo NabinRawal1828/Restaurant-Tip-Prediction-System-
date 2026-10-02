@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Prediction App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ml_app/styles.css' %}">
+</head>
+<body class="landing-body">
+    <header class="topbar">
+        <div class="brand">TipWise</div>
+        <nav class="nav">
+            <a href="{% url 'landing' %}">Home</a>
+            <a href="{% url 'predict' %}">Open App</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-copy">
+            <span class="badge">Machine Learning Dashboard</span>
+            <h1>Predict restaurant tips with confidence.</h1>
+            <p>
+                Smart restaurant insights powered by a trained linear regression model.
+                Track customer patterns, dining details, and tip estimates through a clean,
+                user-friendly dashboard designed for real restaurant decisions.
+            </p>
+            <div class="cta-row">
+                <a class="primary-btn" href="{% url 'predict' %}">Go to Prediction App</a>
+                <a class="secondary-btn" href="#features">View Features</a>
+            </div>
+            <div class="stat-row">
+                <div><strong>6</strong><span>Input Fields</span></div>
+                <div><strong>1</strong><span>ML Model</span></div>
+                <div><strong>24/7</strong><span>Fast Results</span></div>
+            </div>
+        </div>
+
+        <div class="hero-panel">
+            <div class="restaurant-image-wrap">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80" alt="Restaurant interior" class="restaurant-image">
+            </div>
+            <div class="mini-card">
+                <span>Model</span>
+                <strong>Linear Regression</strong>
+            </div>
+            <div class="mini-card highlight">
+                <span>Prediction</span>
+                <strong>$ 5.45</strong>
+            </div>
+            <div class="mini-card">
+                <span>Inputs</span>
+                <strong>6 features</strong>
+            </div>
+        </div>
+    </main>
+
+    <section id="features" class="feature-section">
+        <a href="#menu" class="feature-box feature-link">
+            <h3>View Menu</h3>
+            <p>Food name, category, price, description, image, and availability.</p>
+        </a>
+        <a href="#details" class="feature-box feature-link">
+            <h3>View Food Details</h3>
+            <p>Ingredients, price, preparation time, and stock status.</p>
+        </a>
+        <a href="#categories" class="feature-box feature-link">
+            <h3>View Categories</h3>
+            <p>Breakfast, Lunch, Dinner, Drinks, Desserts, and Snacks.</p>
+        </a>
+        <a href="#tables" class="feature-box feature-link">
+            <h3>View Tables</h3>
+            <p>Table number, capacity, reservation status, and current order.</p>
+        </a>
+        <a href="#orders" class="feature-box feature-link">
+            <h3>View Orders</h3>
+            <p>Order ID, customer, items, quantity, total price, and status.</p>
+        </a>
+        <a href="{% url 'predict' %}" class="feature-box feature-link highlight-link">
+            <h3>Open App</h3>
+            <p>Go to the prediction page and enter the required restaurant values.</p>
+        </a>
+    </section>
+
+    <section class="feature-details">
+        <div id="menu" class="detail-card">
+            <h4>Menu</h4>
+            <p>Food name, category, price, description, image, and whether it is available.</p>
+        </div>
+        <div id="details" class="detail-card">
+            <h4>Food Details</h4>
+            <p>Complete food information including ingredients, preparation time, and stock condition.</p>
+        </div>
+        <div id="categories" class="detail-card">
+            <h4>Categories</h4>
+            <p>Breakfast, Lunch, Dinner, Drinks, Desserts, and Snacks can all be grouped and viewed.</p>
+        </div>
+        <div id="tables" class="detail-card">
+            <h4>Tables</h4>
+            <p>Table number, seat capacity, status, and the current order linked to each table.</p>
+        </div>
+        <div id="orders" class="detail-card">
+            <h4>Orders</h4>
+            <p>Pending → Preparing → Ready → Completed order flow with item details and totals.</p>
+        </div>
+    </section>
+</body>
+</html>
